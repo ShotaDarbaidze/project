@@ -1,0 +1,36 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+<style>
+  .image-box {
+    width: 200px; /* Set the width of the image box */
+    height: 200px; /* Set the height of the image box */
+    overflow: hidden; /* Hide any overflowing content */
+    margin: 0 auto; /* Center the image horizontally */
+  }
+
+  .image-box img {
+    width: 100%; /* Make sure the image fills the image box */
+    height: auto; /* Maintain the aspect ratio of the image */
+    display: block; /* Ensure the image behaves as a block element */
+  }
+</style>
+
+<div class="container">
+  <h1>Profile Page</h1>
+  <h2>{{ user.username }}'s Posts</h2>
+  <div class="row">
+    {% for post in posts %}
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="image-box">
+          <img src="{{ url_for('static', filename='uploads/' + post.image) }}" class="card-img-top" alt="Post Image">
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% endblock %}

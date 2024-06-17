@@ -1,0 +1,159 @@
+{% extends 'navbar.html' %}
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f2f5;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .post-container {
+        border-bottom: 1px solid #ddd;
+        padding: 20px 0;
+        margin-bottom: 20px;
+    }
+
+    .post-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    .btn-group {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 10px;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px;
+        width: 100px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .btn img {
+        margin-right: 8px;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-outline-danger {
+        background-color: #fff;
+        color: #dc3545;
+        border: 1px solid #dc3545;
+    }
+
+    .btn-outline-danger:hover {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .btn-outline-primary {
+        background-color: #fff;
+        color: #007bff;
+        border: 1px solid #007bff;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-outline-success {
+        background-color: #fff;
+        color: #28a745;
+        border: 1px solid #28a745;
+    }
+
+    .btn-outline-success:hover {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control-file,
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-top: 5px;
+    }
+
+    .form-text {
+        color: #6c757d;
+    }
+
+    textarea.form-control {
+        resize: vertical;
+    }
+
+    .card-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-container {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 10px;
+    }
+</style>
+<div class="container mt-3">
+    <div class="card p-3">
+        <h5 class="card-title mb-3">Create a New Post</h5>
+        <form action="{{ url_for('post') }}" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="image">Upload Photo/Video:</label>
+                <input type="file" id="image" name="image" accept="image/*, video/*" class="form-control-file" required>
+                <small class="form-text text-muted">Maximum file size: 200 MB</small>
+            </div>
+            <div class="form-group">
+                <label for="caption">Caption:</label>
+                <textarea id="caption" name="caption" rows="4" class="form-control" placeholder="Enter caption..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-outline-primary">Post</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

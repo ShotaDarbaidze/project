@@ -1,0 +1,35 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Your Reposted Pictures</h1>
+    <div class="row">
+        {% for post in reposted_posts %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="image-box">
+                    <img src="{{ url_for('static', filename='uploads/' + post.image) }}" class="card-img-top" alt="Post Image">
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ post.caption }}</p>
+                    <div class="btn-group" role="group" aria-label="Post Actions">
+                        <!-- Delete Repost Button -->
+                        <form action="{{ url_for('delete_repost', post_id=post.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-outline-danger">
+                                <img src="/static/delete_repost.png" height="20" width="20" alt="Delete Repost Icon"> Delete Repost
+                            </button>
+                        </form>
+                        <!-- View Post Button -->
+                        <a href="{{ url_for('view_post', post_id=post.id) }}" class="btn btn-outline-primary">
+                            <img src="/static/view.png" height="20" width="20" alt="View Post Icon"> View Post
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+

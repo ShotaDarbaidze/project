@@ -1,0 +1,20 @@
+{% extends 'navbar.html' %}
+{% block content %}
+<div class="row">
+    {% if search_users %}
+    <h2>Users found:</h2>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="{{ url_for('other_profile', username=search_users.username) }}">
+                            <img src="https://media.istockphoto.com/id/1495088043/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-portrait.jpg?s=612x612&w=0&k=20&c=dhV2p1JwmloBTOaGAtaA3AW1KSnjsdMt7-U_3EZElZ0=" width="50" height="50">
+                            {{ search_users.username }}
+                        </a>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

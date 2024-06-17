@@ -1,0 +1,31 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+
+
+<div class="container">
+  <h2>Your Liked Posts</h2>
+  <div class="row">
+    {% for post in liked_posts %}
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="image-box">
+          <img src="{{ url_for('static', filename='uploads/' + post.image) }}" class="card-img-top" alt="Post Image">
+          <a href="{{ url_for('view_post', post_id=post.id) }}" class="btn btn-outline-primary">
+             View Post
+        </a>
+        </div>
+        <form action="{{ url_for('delete_like', post_id=post.id) }}" method="POST" style="display:inline;">
+          <button type="submit" class="btn btn-outline-danger">
+               Delete Like
+          </button>
+      </form>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
+
+
